@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+  <h1><a href="{{ url_for('landing_page.index') }}">Nucleus</a></h1>
+  <div id="top_menu">
+    <a href="{{ url_for('landing_page.index') }}">MenuItem1</a>
+    <a href="{{ url_for('landing_page.index') }}">MenuItem2</a>
+    <a href="{{ url_for('landing_page.index') }}">MenuItem3</a>
+  </div>
+</nav>
+<section>
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  <!-- {% for message in get_flashed_messages(): %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %} -->
+  {% block content %}{% endblock %}
+</section>

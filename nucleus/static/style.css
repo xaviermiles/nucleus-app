@@ -1,0 +1,44 @@
+html {
+  font-family: sans-serif;
+  background: #eee;
+  padding: 1rem;
+}
+body {
+  max-width: 960px;
+  margin: 0 auto;
+  background: white;
+}
+
+h1, h1 a {
+  font-family: serif;
+  color: #97a837;
+  margin: 1rem 0;
+  text-decoration: none;
+}
+
+nav {
+  background: lightgray;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+nav a {
+  margin: 0.5rem;
+  color: #601e1e;
+}
+
+/* Why won't this work? */
+#top_menu div
+{
+    float: right;
+    /* position: absolute; right: 0px; */
+    /* position: fixed; right: 0px; */
+}
+
+input.danger {
+  color: #cc2f2e;
+}
+input[type=submit] {
+  align-self: start;
+  min-width: 10em;
+}
