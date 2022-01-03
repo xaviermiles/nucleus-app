@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ mode }}
+{% endblock %}
+
+{% block header %}
+  <h1>{{ mode }}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="username">Username</label>
+    <input name="username" id="username" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    <input type="submit" value="{{ mode }}">
+  </form>
+{% endblock %}

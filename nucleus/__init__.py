@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, url_for
 
-from nucleus import landing_page
+from nucleus import landing_page, db, auth
 
 
 def create_app():
@@ -11,10 +11,10 @@ def create_app():
         SECRET_KEY="dev",
         DATABASE=os.path.join(app.instance_path, "home-server.sqlite")
     )
-    
     if not os.path.exists(app.instance_path):
         os.makedirs(app.instance_path)
-        
+    db.init_app(app)
+    
     # simple test page
     @app.route("/hello")
     def hello():
@@ -22,6 +22,7 @@ def create_app():
         
     # add other pages
     app.register_blueprint(landing_page.bp)
+    app.register_blueprint(auth.bp)
     
     return app
 

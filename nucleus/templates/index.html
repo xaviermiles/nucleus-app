@@ -5,10 +5,13 @@
 {% endblock %}
 
 {% block content %}
-  <br>
-  <br>
-  Welcome to the landing page.<br>
-  <br>
-  Test page: <a href="{{ url_for('hello') }}">hello</a><br>
-  <br>
+  <p>
+    Welcome to the landing page.<br>
+    <br>
+    Test page: <a href="{{ url_for('hello') }}">hello</a><br>
+    <br>
+    Current user: {{ g.user['username'] if g.user['username'] else "No-one" }}<br>
+    <a href="{{ url_for('auth.login') }}">log in</a><br>
+    <a href="{{ url_for('auth.register') }}">register</a><br>
+  </p>
 {% endblock %}
