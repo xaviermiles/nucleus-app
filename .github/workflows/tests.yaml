@@ -24,6 +24,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -e .  # to setup nucleus folder as module
+    - name: Use example config file for testing
+      run: |
+        cp config_example.yaml config.yaml
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
