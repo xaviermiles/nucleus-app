@@ -1,7 +1,7 @@
 # home-server
 Learning how to use flask to make a web app
 
-The [run](#run.sh) bash script will start the app on local host - uncomment line 3 if running for the first time. Need a "./config.yaml" file with:
+The [run](#run.sh) bash script will start the app on local host - uncomment "init-db" line if running for the first time. Need a "./config.yaml" file with:
 ```
 primary_user:
   username: <something>
