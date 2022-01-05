@@ -1,2 +1,9 @@
 flask
 PyYAML
+
+pytest
+pytest-cov
+
+flake8
+autopep8
+jedi

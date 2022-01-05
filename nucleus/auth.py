@@ -32,7 +32,7 @@ def load_logged_in_user():
         g.user = get_db().execute(
             "SELECT * FROM user WHERE id = ?", (user_id,)
         ).fetchone()
-    
+
 
 @bp.route("/login", methods=("GET", "POST"))
 def login():
@@ -83,10 +83,10 @@ def register():
             error = "Username is required."
         elif not password:
             error = "Password is required."
-        id = db.execute("SELECT id FROM user WHERE username = ?", (username,)) \
-               .fetchone()
+        sql_select_id = "SELECT id FROM user WHERE username = ?"
+        id = db.execute(sql_select_id, (username,)).fetchone()
         if id is not None:
-            error = f"User {username} is already registered."
+            error = "Username not available."
 
         if error is None:
             current_dt = datetime.datetime.now()

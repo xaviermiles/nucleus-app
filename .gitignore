@@ -1,8 +1,15 @@
 venv/
 
 __pycache__/
+*.egg-info/
 
-# sqlite db
+# Testing
+htmlcov/
+.coverage
+.pytest_cache/
+
+# Flask
 instance/
+
 # secrets
 config.yaml

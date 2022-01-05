@@ -28,7 +28,7 @@ def close_db(e=None):
 
 def init_db():
     """Clear the existing data and create fresh tables.
-    
+
     Adds primary/super user, as specified in config file.
     """
     db = get_db()
@@ -44,7 +44,7 @@ def init_db():
         " VALUES (?, ?, ?, ?)",
         (primary_user['username'], password_hash, True, current_dt)
     )
-    
+
     db.commit()
 
 
