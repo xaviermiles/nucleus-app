@@ -23,11 +23,11 @@ def test_initial_user_state(client, app):
 def test_register(client, app):
     username = "john"
 
-    assert client.get("/auth/register").status_code == 200
+    assert client.get("/register").status_code == 200
     # Successful registration should redirect to login page
-    response = client.post("/auth/register",
+    response = client.post("/register",
                            data={'username': username, 'password': 'password'})
-    assert "http://localhost/auth/login" == response.headers['Location']
+    assert "http://localhost/login" == response.headers['Location']
     # Check that user was inserted into database
     sql_select = f"SELECT COUNT(*) FROM user WHERE username = '{username}'"
     with app.app_context():
@@ -45,13 +45,13 @@ def test_register(client, app):
     )
 )
 def test_register_invalid_inputs(client, username, password, message):
-    response = client.post("auth/register",
+    response = client.post("/register",
                            data={'username': username, 'password': password})
     assert message in response.data
 
 
 def test_login(client, auth):
-    assert client.get("/auth/login").status_code == 200
+    assert client.get("/login").status_code == 200
     # (Currently) Login is designed to redirect to index page
     response = auth.login()
     assert response.headers['Location'] == "http://localhost/"

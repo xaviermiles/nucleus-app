@@ -7,15 +7,15 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from nucleus.db import get_db
 
-bp = Blueprint("auth", __name__, url_prefix="/auth")
+bp = Blueprint("auth", __name__)
 
 
 def login_required(view):
     """View decorator that redirects anonymous users to the login page."""
-    # TODO: should provide message about being redirected
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.user is None:
+            flash("To view this page, you must be logged in.")
             return redirect(url_for("auth.login"))
         return view(**kwargs)
 
@@ -41,9 +41,8 @@ def login():
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
-        user = get_db().execute("SELECT * FROM user WHERE username = ?",
-                                (username,)) \
-                       .fetchone()
+        sql_select_details = "SELECT * FROM user WHERE username = ?"
+        user = get_db().execute(sql_select_details, (username,)).fetchone()
 
         error = None
         if user is None:

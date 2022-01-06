@@ -36,10 +36,10 @@ class AuthActions:
             cred = read_config()['primary_user']
         else:
             cred = {"username": username, "password": password}
-        return self._client.post("/auth/login", data=cred)
+        return self._client.post("/login", data=cred)
 
     def logout(self):
-        return self._client.get("/auth/logout")
+        return self._client.get("/logout")
 
 
 @pytest.fixture

@@ -2,7 +2,7 @@ import os
 
 from flask import Flask
 
-from nucleus import landing_page, db, auth
+from nucleus import landing_page, db, auth, profile
 
 
 def create_app(test_config=None):
@@ -25,6 +25,7 @@ def create_app(test_config=None):
     # add other pages
     app.register_blueprint(landing_page.bp)
     app.register_blueprint(auth.bp)
+    app.register_blueprint(profile.bp)
 
     return app
 

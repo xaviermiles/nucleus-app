@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Nucleus - {{ g.user['username'] }}
+{% endblock %}
+
+{% block content %}
+  <p>
+    Welcome {{ g.user['username'] }}!<br>
+    <br>
+    <button type="reveal" name="show_user_details">Show details of all users</button>
+    {{ user_details | safe }}
+  </p>
+{% endblock %}
