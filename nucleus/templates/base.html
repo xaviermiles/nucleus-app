@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <title>{% block title %}{% endblock %}</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-  <h1><a href="{{ url_for('landing_page.index') }}">Nucleus</a></h1>
-  <div id="top_menu">
-    <a href="{{ url_for('landing_page.index') }}">MenuItem1</a>
-    <a href="{{ url_for('landing_page.index') }}">MenuItem2</a>
-    <a href="{{ url_for('landing_page.index') }}">MenuItem3</a>
+<div id="wrapper">
+  <div id="mainbar">
+    <header>
+      {% block header %}
+      <nav>
+        <h1><a href="{{ url_for('landing_page.index') }}" id="nucleus_text">
+          {% block main_header %}Nucleus{% endblock %}
+        </a></h1>
+        <div id="top_menu">
+          <a href="{{ url_for('landing_page.index') }}">MenuItem1</a>
+          <a href="{{ url_for('landing_page.index') }}">MenuItem2</a>
+          <a href="{{ url_for('landing_page.index') }}">MenuItem3</a>
+        </div>
+      </nav>
+      {% endblock %}
+    </header>
+    {% for message in get_flashed_messages(): %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
   </div>
-</nav>
-<section>
-  <header>
-    {% block header %}{% endblock %}
-  </header>
-  {% for message in get_flashed_messages(): %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
-  {% block content %}{% endblock %}
-</section>
+  <div id="right-sidebar">
+    {% if g.user %}
+      {{ get_greeting() }},
+      <a href="{{ url_for('profile.index') }}">{{ g.user['username'] }}</a>
+      !<br>
+      <br>
+      <a href="{{ url_for('auth.logout') }}">Log out</a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Log in</a><br>
+      <a href="{{ url_for('auth.register') }}">Register</a>
+    {% endif %}
+  </div>
+</div>

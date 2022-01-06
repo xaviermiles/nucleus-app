@@ -10,7 +10,7 @@ PRIMARY_USER = read_config()['primary_user']
 def test_initial_user_state(client, app):
     # No-one logged in
     rv = client.get("/")
-    assert b"Current user: No-one" in rv.data
+    assert b"Log in" in rv.data and b"Register" in rv.data
 
     sql_select = "SELECT id, username FROM user"
     with app.app_context():

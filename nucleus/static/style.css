@@ -3,10 +3,27 @@ html {
   background: #eee;
   padding: 1rem;
 }
-body {
+/* How to make sidebar alongside main bar without shrinking main bar ?? */
+/* #wrapper {
+  display: flex;
+  overflow: hidden;
+} */
+#mainbar {
   max-width: 960px;
   margin: 0 auto;
   background: white;
+}
+header {
+  background: lightgray;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+#right-sidebar {
+  width: 202px;
+  background: #aad9e6;
+  position: sticky;
+  float: right;
 }
 
 h1, h1 a {
@@ -25,6 +42,15 @@ nav {
 nav a {
   margin: 0.5rem;
   color: #601e1e;
+}
+
+#nucleus_text {
+  font-family: serif;
+  font: 20;
+  color: #97a837;
+  margin: 1rem 0;
+  padding: 0 5rem;
+  text-decoration: none;
 }
 
 /* Why won't this work? */

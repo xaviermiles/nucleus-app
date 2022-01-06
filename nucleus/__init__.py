@@ -1,4 +1,5 @@
 import os
+from random import randint
 
 from flask import Flask
 
@@ -27,7 +28,26 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
     app.register_blueprint(profile.bp)
 
+    # function for sidebar functionality on all pages
+    app.jinja_env.globals.update(get_greeting=get_greeting)
+
     return app
+
+
+def get_greeting():
+    greetings = [
+        "hello",
+        "guten tag", "hallo",
+        "hola", "¿qué tal?",
+        "bonjour", "salut",
+        "zdravstvuyte", "privet",
+        "nǐ hǎo",
+        "salve", "ciao",
+        "shalom",
+        "god dag",
+    ]
+    i = randint(0, len(greetings) - 1)
+    return greetings[i].title()
 
 
 if __name__ == "__main__":
